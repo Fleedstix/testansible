@@ -75,7 +75,7 @@
 - name: Install kibana
   hosts: elasticsearch
   tasks:
-    - name: Upload tar.gz kibana from remote URL
+    - name: download kibana
       become: true
       get_url:
         url: "https://artifacts.elastic.co/downloads/kibana/kibana-{{ kibana_version }}-amd64.deb"
@@ -100,3 +100,10 @@
         dest: /etc/kibana/kibana.yml
       tags: kibana
       notify: restart kibana
+
+  handlers:
+    - name: restart kibana
+      service:
+        name: kibana
+        state: restarted
+      become: yes
