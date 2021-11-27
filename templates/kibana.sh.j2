@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 
-elasticsearch.url: "http://172.16.16.101:9200"
-server.host: 0.0.0.0
+export KIBANA_HOME={{ kibana_home }}
+export PATH=$PATH:$KIBANA_HOME/bin
