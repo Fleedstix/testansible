@@ -39,6 +39,7 @@
   hosts: elasticsearch
   tasks:
     - name: Upload tar.gz Elasticsearch from remote URL
+      become: true
       get_url:
         url: "https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-{{ elastic_version }}-linux-x86_64.tar.gz"
         dest: "/tmp/elasticsearch-{{ elastic_version }}-linux-x86_64.tar.gz"
@@ -50,6 +51,7 @@
       until: get_elastic is succeeded
       tags: elastic
     - name: Create directrory for Elasticsearch
+      become: true
       file:
         state: directory
         path: "{{ elastic_home }}"
@@ -74,6 +76,7 @@
   hosts: elasticsearch
   tasks:
     - name: Upload tar.gz kibana from remote URL
+      become: true
       get_url:
         url: "https://artifacts.elastic.co/downloads/kibana/kibana-{{ kibana_version }}-amd64.deb"
         dest: "/tmp/kibana-{{ kibana_version }}-amd64.deb"
