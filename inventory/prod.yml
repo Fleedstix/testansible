@@ -1,7 +1,21 @@
 ---
 elasticsearch:
   hosts:
-    ubuntuvm2:
+    el-instance:
+      ansible_host: 172.42.42.101
       ansible_connection: ssh
-      ansible_user: root
-      ansible_password: 1234
+      ansible_user: vagrant
+
+filebeat:
+  hosts:
+    fb-instance:
+      ansible_host: 172.42.42.102
+      ansible_connection: ssh
+      ansible_user: vagrant
+
+kibana:
+  hosts:
+    kb-instance:
+      ansible_host: 172.42.42.101
+      ansible_connection: ssh
+      ansible_user: vagrant
